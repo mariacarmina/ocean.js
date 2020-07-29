@@ -56,6 +56,13 @@ export class Config {
      */
     public datatokensABI?: object
 
+
+    /**
+     * Fixed Price Liquidity Provider ABI
+     * @type {string}
+     */
+    public fplpABI?: object
+
     /**
      * Pool Factory address
      * @type {string}

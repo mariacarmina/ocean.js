@@ -19,6 +19,7 @@ import {
 } from '../Instantiable.abstract'
 import { Compute } from './Compute'
 import { OceanPool } from '../balancer/OceanPool'
+import { FixedPriceLP} from '../datatokens/FixedPriceLP'
 
 /**
  * Main interface for Ocean Protocol.
@@ -54,6 +55,13 @@ export class Ocean extends Instantiable {
             instanceConfig.config.factoryAddress,
             instanceConfig.config.factoryABI,
             instanceConfig.config.datatokensABI,
+            instanceConfig.config.web3Provider
+        )
+        instance.fplp = new FixedPriceLP(
+            instanceConfig.config.factoryAddress,
+            instanceConfig.config.oceanTokenAddress,
+            instanceConfig.config.factoryABI,
+            instanceConfig.config.fplpABI,
             instanceConfig.config.web3Provider
         )
         instance.pool = new OceanPool(
@@ -128,6 +136,12 @@ export class Ocean extends Instantiable {
      * @type {OceanPool}
      */
     public pool: OceanPool
+
+    /**
+     * Ocean Fixed Price Liquidity Providers
+     * @type {FixedPriceLP}
+     */
+    public fplp: FixedPriceLP
 
     /**
      * Ocean tokens submodule
